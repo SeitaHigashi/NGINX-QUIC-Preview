@@ -13,6 +13,13 @@ RUN apt-get update && \
     cd nginx-quic && \
     ./auto/configure --with-debug --with-http_v3_module --with-cc-opt="-I../boringssl/include" --with-ld-opt="-L../boringssl/build/ssl -L../boringssl/build/crypto" && \
     make && \
-    make install
+    make install && \
+    cd ../ && \
+    rm -rf nginx-quic && \
+    rm -rf boringssl && \
+    apt-get purge -y git mercurial ninja-build make cmake perl gcc && \
+    apt-get autoclean && \
+    apt-get clean && \
+    apt-get autoremove -y 
 
-CMD [ "/usr/local/nginx/sbin/nginx", "-g", "deamon off;" ]
+CMD [ "/usr/local/nginx/sbin/nginx", "-g", "daemon off;" ]
