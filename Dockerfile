@@ -15,9 +15,9 @@ RUN apt-get update && \
     make && \
     make install && \
     cd ../ && \
-    rm -rf nginx-quic && \
-    rm -rf boringssl && \
-    apt-get purge -y git mercurial ninja-build make cmake perl gcc && \
+    # rm -rf nginx-quic && \
+    # rm -rf boringssl && \
+    # apt-get purge -y git mercurial ninja-build make cmake perl gcc && \
     apt-get autoclean && \
     apt-get clean && \
     apt-get autoremove -y 
